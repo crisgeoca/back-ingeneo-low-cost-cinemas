@@ -9,8 +9,16 @@ bin/*
 mvnw
 *.cmd
 HELP.md
-domain/model/.mvn/*
-domain/usecase/.mvn/*
+application/.settings/*
+application/target/*
+controllers/.settings/*
+controllers/target/*
+domain/.settings/*
+domain/target/*
+repository/.settings/*
+repository/target/*
+services/.settings/*
+services/target/*
 
 # Log file
 *.log

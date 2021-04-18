@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ingeneo</groupId>
+		<artifactId>cinemas-management</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>application</artifactId>
+	<name>application</name>
+	<description>Application module</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ingeneo</groupId>
+			<artifactId>controllers</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ingeneo</groupId>
+			<artifactId>services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ingeneo</groupId>
+			<artifactId>repository</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+</project>
