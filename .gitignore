@@ -5,9 +5,12 @@
 *.project
 *.settings/*
 target/*
+bin/*
 mvnw
 *.cmd
 HELP.md
+domain/model/.mvn/*
+domain/usecase/.mvn/*
 
 # Log file
 *.log
