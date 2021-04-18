@@ -1,5 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,8 +13,13 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="manager")
-public class Manager{
+public class Manager implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3851963925599367721L;
+
 	@Id
 	private String identificationNumber;
 	

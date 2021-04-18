@@ -1,5 +1,6 @@
 package com.ingeneo.cinemas.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,8 +18,13 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="movie_schedule")
-public class MovieSchedule {
+public class MovieSchedule implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4124842182443859783L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

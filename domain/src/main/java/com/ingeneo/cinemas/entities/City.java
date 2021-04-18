@@ -1,6 +1,6 @@
 package com.ingeneo.cinemas.entities;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,16 +16,24 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="city")
-public class City {
+public class City implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1555390698154213149L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column
+	private String name;
+	
+	@Column
 	private String department; 
 	
 	@OneToMany(mappedBy = "city")
-	private List<CinemaBranch> cinemaBranch = new ArrayList<CinemaBranch>();
+	private List<CinemaBranch> cinemaBranch;
 
 }

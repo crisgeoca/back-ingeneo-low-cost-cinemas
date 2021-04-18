@@ -1,5 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +19,13 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="room")
-public class Room {
+public class Room implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 636887196703805931L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

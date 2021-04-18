@@ -1,8 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,8 +23,13 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="movie")
-public class Movie {
+public class Movie implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7077487286463335739L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -47,7 +51,7 @@ public class Movie {
 	private Date finalReleaseDate;
 	
 	@OneToMany(mappedBy = "movie")
-	private List<MovieGenre> movieGenre = new ArrayList<MovieGenre>();
+	private List<MovieGenre> movieGenre;
 	
 	@Column
 	private String synopsis;
@@ -60,6 +64,6 @@ public class Movie {
 	private int minutesDuration;
 	
 	@ManyToMany(mappedBy = "movies")
-    private Set<CinemaBranch> cinemaBranches = new HashSet<>();
+    private Set<CinemaBranch> cinemaBranches;
 
 }

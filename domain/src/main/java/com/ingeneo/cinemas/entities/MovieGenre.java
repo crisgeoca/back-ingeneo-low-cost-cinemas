@@ -1,5 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,8 +17,13 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="movie_genre")
-public class MovieGenre {
+public class MovieGenre implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3792961148712870676L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

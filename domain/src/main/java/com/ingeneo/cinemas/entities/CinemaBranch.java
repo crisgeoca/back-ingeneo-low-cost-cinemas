@@ -1,7 +1,6 @@
 package com.ingeneo.cinemas.entities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +24,12 @@ import lombok.Data;
 @Data
 @Builder(toBuilder = true)
 @Entity(name="cinema_branch")
-public class CinemaBranch {
+public class CinemaBranch implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6281500757115781017L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,7 +50,7 @@ public class CinemaBranch {
 	private Manager manager;
 
 	@OneToMany(mappedBy = "cinemaBranch")
-	private List<Room> room = new ArrayList<Room>();
+	private List<Room> room;
 
 	@ManyToMany(cascade = {
 		    CascadeType.PERSIST,
@@ -55,6 +59,6 @@ public class CinemaBranch {
 	@JoinTable(name = "branches_movies",
 			joinColumns = @JoinColumn(name = "cinemaBranch_id"),
 			inverseJoinColumns = @JoinColumn(name = "movie_id"))
-	private Set<Movie> movies = new HashSet<>();
+	private Set<Movie> movies;
 
 }
