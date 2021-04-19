@@ -2,13 +2,13 @@ package com.ingeneo.cinemas.impl;
 
 import com.ingeneo.cinemas.bodies.CityRequestBody;
 import com.ingeneo.cinemas.entities.City;
-import com.ingeneo.cinemas.interfaces.CityInterface;
+import com.ingeneo.cinemas.interfaces.CityService;
 import com.ingeneo.cinemas.repositories.CityRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CityImpl implements CityInterface{
+public class CityServiceImpl implements CityService{
 	
 	private final CityRepository cityRepository;
 	

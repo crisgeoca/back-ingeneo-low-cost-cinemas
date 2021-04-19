@@ -18,10 +18,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity(name="cinema_branch")
 public class CinemaBranch implements Serializable{
@@ -42,7 +48,7 @@ public class CinemaBranch implements Serializable{
 	private String address;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cinemaBranch")	
+    @JoinColumn(name = "cinemaBranchCity")	
 	private City city;
 
 	@OneToOne(cascade = CascadeType.ALL)
