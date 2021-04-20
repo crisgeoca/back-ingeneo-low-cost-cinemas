@@ -10,12 +10,16 @@ import com.ingeneo.cinemas.impl.ConfirmationTokenServiceImpl;
 import com.ingeneo.cinemas.impl.EmailSenderServiceImpl;
 import com.ingeneo.cinemas.impl.EmailValidatorServiceImpl;
 import com.ingeneo.cinemas.impl.RegistrationServiceImpl;
+import com.ingeneo.cinemas.impl.RoomServiceImpl;
+import com.ingeneo.cinemas.impl.TypeServiceImpl;
 import com.ingeneo.cinemas.interfaces.ConfirmationTokenService;
 import com.ingeneo.cinemas.interfaces.EmailSenderService;
 import com.ingeneo.cinemas.repositories.CinemaBranchRepository;
 import com.ingeneo.cinemas.repositories.CityRepository;
 import com.ingeneo.cinemas.repositories.ConfirmationTokenRepository;
 import com.ingeneo.cinemas.repositories.LoginRepositiry;
+import com.ingeneo.cinemas.repositories.RoomRepository;
+import com.ingeneo.cinemas.repositories.TypeRepository;
 import com.ingeneo.cinemas.security.LoginSecurityServiceImpl;
 
 @Configuration
@@ -54,6 +58,17 @@ public class GeneralBeansConfig {
 	@Bean("emailSenderServiceImpl")
 	public EmailSenderServiceImpl createEmailSenderServiceImpl(){
 		return new EmailSenderServiceImpl();
+	}
+	
+	@Bean("typeServiceImpl")
+	public TypeServiceImpl createTypeServiceImpl(TypeRepository typeRepository){
+		return new TypeServiceImpl(typeRepository);
+	}
+	
+	@Bean("roomServiceImpl")
+	public RoomServiceImpl createRoomServiceImpl(RoomRepository roomRepository, CinemaBranchRepository cinemaBranchRepository, 
+			TypeRepository typeRepository){
+		return new RoomServiceImpl(roomRepository, cinemaBranchRepository, typeRepository);
 	}
 
 }

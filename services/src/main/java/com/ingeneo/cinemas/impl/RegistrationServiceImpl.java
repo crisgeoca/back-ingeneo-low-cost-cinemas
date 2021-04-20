@@ -41,9 +41,9 @@ public class RegistrationServiceImpl implements RegistrationService{
 				.build());
 		
 		String link = "http://localhost:9280/confirm?token=".concat(token);
-		emailSenderService.send(
-				registrationRequestBody.getEmail(),
-                buildEmail(registrationRequestBody.getName(), link));
+//		emailSenderService.send(
+//				registrationRequestBody.getEmail(),
+//                buildEmail(registrationRequestBody.getName(), link));
 		
 		return token;
 	}

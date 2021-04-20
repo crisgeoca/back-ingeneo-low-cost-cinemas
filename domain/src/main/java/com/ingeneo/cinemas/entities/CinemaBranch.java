@@ -1,7 +1,6 @@
 package com.ingeneo.cinemas.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,9 +50,6 @@ public class CinemaBranch implements Serializable{
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "users_identificationNumber")
 	private Users users;
-
-	@OneToMany(mappedBy = "cinemaBranch")
-	private List<Room> room;
 
 	@ManyToMany(cascade = {
 		    CascadeType.PERSIST,

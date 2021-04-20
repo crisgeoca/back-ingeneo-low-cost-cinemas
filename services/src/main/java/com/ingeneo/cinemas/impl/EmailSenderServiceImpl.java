@@ -21,8 +21,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EmailSenderServiceImpl implements EmailSenderService{	
 	
-	private final static Logger LOGGER = LoggerFactory
-            .getLogger(EmailSenderServiceImpl.class);
+	private static final String EMAIL_SEND_FAILED = "No se puedo enviar el email de registro - Causa %s";
+	
+	private final static Logger LOGGER = LoggerFactory.getLogger(EmailSenderServiceImpl.class);
 
     @Override
     @Async
@@ -50,8 +51,9 @@ public class EmailSenderServiceImpl implements EmailSenderService{
             message.setContent(email, "text/html");
             Transport.send(message);
         } catch (MessagingException e) {
-        	LOGGER.error("failed to send email", e);
-            throw new IllegalStateException("failed to send email");
+        	String errorMessage = String.format(EMAIL_SEND_FAILED, e.getMessage());
+        	LOGGER.error(errorMessage);
+            throw new IllegalStateException(errorMessage);
         }
     }
     
