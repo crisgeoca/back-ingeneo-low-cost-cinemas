@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,8 +33,5 @@ public class Manager implements Serializable{
 	
 	@Column
 	private String phoneNumber;
-	
-	@OneToOne(mappedBy = "manager")
-	private CinemaBranch cinemaBranch;
 
 }

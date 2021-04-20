@@ -51,8 +51,7 @@ public class CinemaBranch implements Serializable{
     @JoinColumn(name = "cinemaBranchCity")	
 	private City city;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "manager_id", referencedColumnName = "identificationNumber")
+	@OneToOne(fetch = FetchType.LAZY)
 	private Manager manager;
 
 	@OneToMany(mappedBy = "cinemaBranch")
