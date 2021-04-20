@@ -2,7 +2,6 @@ package com.ingeneo.cinemas.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import lombok.Builder;
 import lombok.Data;
@@ -30,12 +28,12 @@ public class Room implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "room_type_id")
 	private Type type;
 	
 	@Column
-	private int rowsNumer;
+	private int rowsNumber;
 	
 	@Column
 	private int maxRowsNumber;

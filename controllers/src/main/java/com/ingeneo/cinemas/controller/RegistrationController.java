@@ -35,7 +35,7 @@ public class RegistrationController {
 		
 	}
 	
-	@GetMapping(path = "/confirm")
+	@GetMapping(path = "/confirmEmail")
     public String confirm(@ApiParam("Endpoint para confirmar registro de usuarios") 
     @RequestParam("token") String token) {
         return registrationService.confirmToken(token);

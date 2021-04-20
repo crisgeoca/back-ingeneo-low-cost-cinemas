@@ -7,7 +7,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,12 +45,13 @@ public class CinemaBranch implements Serializable{
 	@Column
 	private String address;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cinemaBranchCity")	
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "city_id")
 	private City city;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	private Manager manager;
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "users_identificationNumber")
+	private Users users;
 
 	@OneToMany(mappedBy = "cinemaBranch")
 	private List<Room> room;

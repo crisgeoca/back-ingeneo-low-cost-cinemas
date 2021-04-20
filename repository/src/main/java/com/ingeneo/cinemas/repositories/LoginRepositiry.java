@@ -10,12 +10,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ingeneo.cinemas.entities.Users;
+import com.ingeneo.cinemas.enums.UserRole;
 
 @Repository
 @Transactional(readOnly = true)
 public interface LoginRepositiry extends CrudRepository<Users, String>{
 	
 	Optional<Users> findByEmail(String email);
+	
+	Optional<Users> findByIdentificationNumberAndUserRole(String id, UserRole role);
 	
 	@Transactional
     @Modifying

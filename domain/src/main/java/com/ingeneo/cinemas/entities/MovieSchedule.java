@@ -1,7 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Builder;
 import lombok.Data;
@@ -29,14 +29,15 @@ public class MovieSchedule implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Movie.class)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="movie_id")
 	private Movie movie;
 	
 	@Column
-	private Date scheduledDate;
+	private LocalDateTime scheduledDate;
 	
-	@Column
-	private String scheduledTime;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="room_id")
+	private Room room;
 
 }

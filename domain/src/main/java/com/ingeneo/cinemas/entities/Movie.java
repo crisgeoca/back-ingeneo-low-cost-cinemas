@@ -1,7 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -41,16 +41,17 @@ public class Movie implements Serializable{
 	private String translatedName;
 	
 	@Column
-	private Date releaseDate;
+	private LocalDateTime releaseDate;
 	
 	@Lob
     @Column
     private byte[] moviePic;
 	
 	@Column
-	private Date finalReleaseDate;
+	private LocalDateTime finalReleaseDate;
 	
-	@OneToMany(mappedBy = "movie")
+	@OneToMany
+	@JoinColumn(nullable = false, name = "movie_genre_id")
 	private List<MovieGenre> movieGenre;
 	
 	@Column

@@ -24,6 +24,6 @@ public class CinemaBranchRequestBody {
 
 	@ApiModelProperty(notes = "ID del administrador de la sucursal", example = 
 			"123456789", required = true, position = 3)
-	private String manager;
+	private String user;
 
 }

@@ -1,7 +1,7 @@
 package com.ingeneo.cinemas.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Builder;
 import lombok.Data;
@@ -29,17 +29,32 @@ public class MovieBooking implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Client.class)
-	@JoinColumn(name="client_id")
-	private Client client;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="users_identificationNumber")
+	private Users user;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="movie_id")
+	private Movie movie;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="city_id")
+	private City city;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cinema_branch_id")
+	private CinemaBranch cinemaBranch;
 	
 	@Column
 	private int chairsNumber;
 	
 	@Column
-	private Date bookingDate;
+	private LocalDateTime bookingDate;
 	
 	@Column
-	private boolean paid;
+	private LocalDateTime expirationBookingDate;
+	
+	@Column
+	private boolean bookingState;
 
 }

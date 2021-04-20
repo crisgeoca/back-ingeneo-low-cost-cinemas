@@ -40,10 +40,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("crisgeoca@gmail.com", "*****");
             }
-
         });
-
-        session.setDebug(true);
 
         try {
             MimeMessage message = new MimeMessage(session);
@@ -56,8 +53,6 @@ public class EmailSenderServiceImpl implements EmailSenderService{
         	LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");
         }
-
     }
     
-
 }
