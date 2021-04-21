@@ -8,4 +8,6 @@ import com.ingeneo.cinemas.entities.Type;
 @Repository
 public interface TypeRepository extends CrudRepository<Type, Long>{
 	
+	Type findByDescription(String description);
+	
 }
