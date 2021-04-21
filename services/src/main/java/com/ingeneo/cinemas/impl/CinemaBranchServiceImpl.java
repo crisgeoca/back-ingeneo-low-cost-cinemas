@@ -1,7 +1,5 @@
 package com.ingeneo.cinemas.impl;
 
-import java.util.Optional;
-
 import com.ingeneo.cinemas.bodies.CinemaBranchRequestBody;
 import com.ingeneo.cinemas.entities.CinemaBranch;
 import com.ingeneo.cinemas.entities.City;
@@ -37,21 +35,15 @@ public class CinemaBranchServiceImpl implements CinemaBranchService{
 	}
 	
 	private Users getUser(String id) throws Exception {
-		Optional<Users> user = loginRepositiry.findByIdentificationNumberAndUserRole(id, UserRole.ADMIN);
-		if(!user.isPresent()) {
-			throw new Exception(String.format(MANAGER_NOT_FOUND, id));
-		}
-		return user.get();
 		
+		return loginRepositiry.findByIdentificationNumberAndUserRole(id, UserRole.ADMIN).orElseThrow(
+				() -> new Exception(String.format(MANAGER_NOT_FOUND, id)));		
 	}
 	
 	private City getCity(Long id) throws Exception {
-		Optional<City> city = cityRepository.findById(id);
-		if(!city.isPresent()) {
-			throw new Exception(String.format(CITY_NOT_FOUND, id));
-		}
-		return city.get();
 		
+		return cityRepository.findById(id).orElseThrow(
+				() -> new Exception(String.format(CITY_NOT_FOUND, id)));		
 	}
 
 }

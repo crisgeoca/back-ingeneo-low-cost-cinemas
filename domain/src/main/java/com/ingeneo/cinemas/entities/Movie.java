@@ -51,7 +51,6 @@ public class Movie implements Serializable{
 	private LocalDateTime finalReleaseDate;
 	
 	@OneToMany
-	@JoinColumn(nullable = false, name = "movie_genre_id")
 	private List<MovieGenre> movieGenre;
 	
 	@Column

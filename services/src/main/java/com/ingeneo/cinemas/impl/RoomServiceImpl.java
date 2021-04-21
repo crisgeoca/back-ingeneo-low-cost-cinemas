@@ -1,7 +1,5 @@
 package com.ingeneo.cinemas.impl;
 
-import java.util.Optional;
-
 import com.ingeneo.cinemas.bodies.RoomRequestBody;
 import com.ingeneo.cinemas.entities.CinemaBranch;
 import com.ingeneo.cinemas.entities.Room;
@@ -16,8 +14,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService{
 	
-	private static final String TYPE_NOT_FOUND = "Tipo de sala/formato no encontrado";
-	private static final String NOT_ROOM_CREATED = "La sala indicada no se encuentra creada";
+	private static final String TYPE_NOT_FOUND = "Tipo de sala/formato %s no encontrado";
+	private static final String NOT_ROOM_CREATED = "La sala %s indicada no se encuentra creada";
 	
 	private final RoomRepository roomRepository;
 	private final CinemaBranchRepository cinemaBranchRepository;
@@ -37,20 +35,14 @@ public class RoomServiceImpl implements RoomService{
 
 	private CinemaBranch getCinemaBranch(Long id) throws Exception {
 		
-		Optional<CinemaBranch> cinemaBranch = cinemaBranchRepository.findById(id);
-		if(!cinemaBranch.isPresent()) {
-			throw new Exception(String.format(NOT_ROOM_CREATED, id));
-		}
-		return cinemaBranch.get();
+		return cinemaBranchRepository.findById(id).orElseThrow(
+				() -> new Exception(String.format(NOT_ROOM_CREATED, id)));
 	}
 
 	private Type getType(Long id) throws Exception {
 		
-		Optional<Type> type = typeRepository.findById(id);
-		if(!type.isPresent()) {
-			throw new Exception(String.format(TYPE_NOT_FOUND, id));
-		}
-		return type.get();
+		return typeRepository.findById(id).orElseThrow(
+				() -> new Exception(String.format(TYPE_NOT_FOUND, id)));
 	}
 
 }
